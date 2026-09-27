@@ -195,11 +195,11 @@ Configure AWS credentials on your machine or in the deployment environment so bo
 
 ## Architecture
 
-Diagrams live in `[docs/](docs/)`.
+Diagrams live in [`docs/architecture/`](docs/architecture/).
 
 ### System overview
 
-![System overview](vscode-file://vscode-app/Users/jayanth/Desktop/firefight-server/docs/system-overview.png)
+![System overview](docs/architecture/system-overview.png)
 
 BMS telemetry flows through SQS into PostgreSQL; the FastAPI server exposes tickets, technicians, auth, and orchestrated multi-agent chat. The React client calls the API.
 
@@ -207,11 +207,11 @@ BMS telemetry flows through SQS into PostgreSQL; the FastAPI server exposes tick
 
 Orchestrated routing: one message is classified, then either the **QA** or **allocation** specialist runs (not both in parallel).
 
-![Multi-agent chat flow](vscode-file://vscode-app/Users/jayanth/Desktop/firefight-server/docs/multi-agent-flow.png)
+![Multi-agent chat flow](docs/architecture/multi-agent-flow.png)
 
 ### Deployment
 
-![Deployment](vscode-file://vscode-app/Users/jayanth/Desktop/firefight-server/docs/deployment.png)
+![Deployment](docs/architecture/deployment.png)
 
 ---
 
