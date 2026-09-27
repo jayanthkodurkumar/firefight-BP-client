@@ -1,0 +1,29 @@
+@import 'tailwindcss';
+
+:root {
+  --base-grey-100: #292826;
+  --base-grey-60: #7f7d7a;
+  --base-grey-20: #d8d7d5;
+  --base-grey-5: #f0eeeb;
+  --base-green-90: #1e4d2b;
+  --base-green-60: #77a45a;
+  --base-green-20: #b2dd79;
+  --base-green-5: #d6f0b4;
+  --base-surface: #f0eeeb;
+  --base-surface-raised: #ffffff;
+  --base-border: #d8d7d5;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--base-surface);
+  color: var(--base-grey-100);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
