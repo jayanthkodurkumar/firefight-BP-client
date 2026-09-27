@@ -1,7 +1,11 @@
 {
   "rewrites": [
     {
-      "source": "/((?!assets/).*)",
+      "source": "/api/:path*",
+      "destination": "http://bp-ai-env.eba-k32w42zi.us-east-2.elasticbeanstalk.com/api/:path*"
+    },
+    {
+      "source": "/((?!assets/|api/).*)",
       "destination": "/index.html"
     }
   ]

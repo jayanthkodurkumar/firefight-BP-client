@@ -18,12 +18,22 @@ export function setUnauthorizedHandler(handler: (() => void) | null): void {
   unauthorizedHandler = handler
 }
 
+/** Backend origin, or current site origin when using same-origin `/api` (e.g. Vercel rewrite). */
 export function getApiBaseUrl(): string {
-  const base = import.meta.env.VITE_API_URL
-  if (!base) {
-    throw new Error('VITE_API_URL is not set')
+  const configured = import.meta.env.VITE_API_URL?.trim()
+  if (configured) {
+    return configured.replace(/\/$/, '')
   }
-  return base.replace(/\/$/, '')
+  if (typeof window !== 'undefined') {
+    return window.location.origin
+  }
+  throw new Error(
+    'VITE_API_URL is not set and API base cannot be resolved without a browser origin',
+  )
+}
+
+function apiUrl(path: string): string {
+  return new URL(path, `${getApiBaseUrl()}/`).href
 }
 
 function parseErrorDetail(body: unknown, fallback: string): string {
@@ -82,7 +92,7 @@ export async function apiGet<T>(
   searchParams?: Record<string, string | number | undefined>,
   options?: { auth?: boolean },
 ): Promise<T> {
-  const url = new URL(path, `${getApiBaseUrl()}/`)
+  const url = new URL(apiUrl(path))
 
   if (searchParams) {
     for (const [key, value] of Object.entries(searchParams)) {
@@ -106,7 +116,7 @@ export async function apiPost<T>(
   options?: { auth?: boolean },
 ): Promise<T> {
   const useAuth = options?.auth !== false
-  const response = await fetch(new URL(path, `${getApiBaseUrl()}/`), {
+  const response = await fetch(apiUrl(path), {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -124,7 +134,7 @@ export async function apiPatch<T>(
   options?: { auth?: boolean },
 ): Promise<T> {
   const useAuth = options?.auth !== false
-  const response = await fetch(new URL(path, `${getApiBaseUrl()}/`), {
+  const response = await fetch(apiUrl(path), {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
