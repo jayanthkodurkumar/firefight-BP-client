@@ -24,14 +24,9 @@ export function FirefightLogo({
         {FIREFIGHT_EMOJI}
       </Text>
       {showWordmark ? (
-        <div>
-          <Text fw={700} size="sm" lh={1.2} c={basePalette.grey100}>
-            Firefight
-          </Text>
-          <Text size="xs" c={basePalette.grey60} lh={1.2}>
-            CAN telemetry operations
-          </Text>
-        </div>
+        <Text fw={700} size="sm" lh={1.2} c={basePalette.grey100}>
+          Firefight
+        </Text>
       ) : null}
     </Box>
   )
