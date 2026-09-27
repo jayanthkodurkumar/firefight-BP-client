@@ -1,4 +1,5 @@
 import { Box, Container, Paper, Stack } from '@mantine/core'
+import { FirefightAbout } from '../brand/FirefightAbout'
 import { FirefightLogo } from '../brand/FirefightLogo'
 import { basePalette } from '../../theme/basePalette'
 
@@ -20,9 +21,10 @@ export function AuthLayout({ children }: AuthLayoutProps) {
         padding: 'var(--mantine-spacing-md)',
       }}
     >
-      <Container size={420} w="100%">
+      <Container size={480} w="100%">
         <Stack gap="lg">
           <FirefightLogo />
+          <FirefightAbout />
           <Paper p="xl" radius="md" withBorder shadow="xs">
             {children}
           </Paper>
