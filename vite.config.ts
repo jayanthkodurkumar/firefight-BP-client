@@ -8,8 +8,8 @@ export default defineConfig(({ mode }) => {
 
   // On Vercel, API calls must go to same-origin /api (see vercel.json rewrite).
   // Do not bake http://elasticbeanstalk… into the JS bundle even if env vars are set.
-  const onVercel = env.VERCEL === '1'
-  const apiUrl = onVercel
+  const sameOriginApi = env.VERCEL === '1'
+  const apiUrl = sameOriginApi
     ? ''
     : (env.VITE_API_URL || env.API_URL || '').trim()
 
