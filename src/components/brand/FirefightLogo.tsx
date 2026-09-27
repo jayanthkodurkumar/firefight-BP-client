@@ -12,29 +12,17 @@ export function FirefightLogo({
   size = 'md',
   showWordmark = true,
 }: FirefightLogoProps) {
-  const boxSize = size === 'sm' ? 24 : 28
-  const emojiSize = size === 'sm' ? 14 : 16
+  const emojiSize = size === 'sm' ? 22 : 26
 
   return (
     <Box style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-      <Box
-        w={boxSize}
-        h={boxSize}
-        style={{
-          borderRadius: 8,
-          backgroundColor: basePalette.green20,
-          border: `1px solid ${basePalette.green90}`,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          flexShrink: 0,
-        }}
+      <Text
+        span
+        style={{ fontSize: emojiSize, lineHeight: 1, flexShrink: 0 }}
         aria-hidden
       >
-        <Text span style={{ fontSize: emojiSize, lineHeight: 1 }}>
-          {FIREFIGHT_EMOJI}
-        </Text>
-      </Box>
+        {FIREFIGHT_EMOJI}
+      </Text>
       {showWordmark ? (
         <div>
           <Text fw={700} size="sm" lh={1.2} c={basePalette.grey100}>
